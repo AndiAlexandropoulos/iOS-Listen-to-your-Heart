@@ -11,6 +11,11 @@
 		A9C67ABD296D8DAF0010AB47 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C67ABC296D8DAF0010AB47 /* ContentView.swift */; };
 		A9C67ABF296D8DB00010AB47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9C67ABE296D8DB00010AB47 /* Assets.xcassets */; };
 		A9C67AC2296D8DB00010AB47 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9C67AC1296D8DB00010AB47 /* Preview Assets.xcassets */; };
+		A9C67ACA296D90BB0010AB47 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C67AC9296D90BB0010AB47 /* WelcomeScreen.swift */; };
+		A9C67ACC296DA5520010AB47 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C67ACB296DA5520010AB47 /* LoginScreen.swift */; };
+		A9C67ACE296DA5680010AB47 /* SignupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C67ACD296DA5680010AB47 /* SignupScreen.swift */; };
+		A9CE12CB29951DD60061A518 /* SearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CE12CA29951DD60061A518 /* SearchScreen.swift */; };
+		A9DD2D0129A6477000A60E40 /* HeartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DD2D0029A6477000A60E40 /* HeartViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		A9C67ABC296D8DAF0010AB47 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A9C67ABE296D8DB00010AB47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9C67AC1296D8DB00010AB47 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A9C67AC9296D90BB0010AB47 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
+		A9C67ACB296DA5520010AB47 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		A9C67ACD296DA5680010AB47 /* SignupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreen.swift; sourceTree = "<group>"; };
+		A9CE12CA29951DD60061A518 /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
+		A9DD2D0029A6477000A60E40 /* HeartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +61,9 @@
 		A9C67AB9296D8DAF0010AB47 /* ListenToYourHeart */ = {
 			isa = PBXGroup;
 			children = (
+				A9D4472F29A3B8BF001144AF /* ViewModel */,
+				A9D4472E29A3B8B1001144AF /* Models */,
+				A9C67AC8296D8DFE0010AB47 /* Views */,
 				A9C67ABA296D8DAF0010AB47 /* ListenToYourHeartApp.swift */,
 				A9C67ABC296D8DAF0010AB47 /* ContentView.swift */,
 				A9C67ABE296D8DB00010AB47 /* Assets.xcassets */,
@@ -65,6 +78,32 @@
 				A9C67AC1296D8DB00010AB47 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A9C67AC8296D8DFE0010AB47 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A9C67AC9296D90BB0010AB47 /* WelcomeScreen.swift */,
+				A9C67ACB296DA5520010AB47 /* LoginScreen.swift */,
+				A9C67ACD296DA5680010AB47 /* SignupScreen.swift */,
+				A9CE12CA29951DD60061A518 /* SearchScreen.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A9D4472E29A3B8B1001144AF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A9D4472F29A3B8BF001144AF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A9DD2D0029A6477000A60E40 /* HeartViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +176,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9DD2D0129A6477000A60E40 /* HeartViewModel.swift in Sources */,
+				A9C67ACA296D90BB0010AB47 /* WelcomeScreen.swift in Sources */,
+				A9C67ACC296DA5520010AB47 /* LoginScreen.swift in Sources */,
 				A9C67ABD296D8DAF0010AB47 /* ContentView.swift in Sources */,
+				A9C67ACE296DA5680010AB47 /* SignupScreen.swift in Sources */,
 				A9C67ABB296D8DAF0010AB47 /* ListenToYourHeartApp.swift in Sources */,
+				A9CE12CB29951DD60061A518 /* SearchScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
