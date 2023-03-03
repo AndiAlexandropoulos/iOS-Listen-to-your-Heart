@@ -9,9 +9,15 @@ import SwiftUI
 
 struct SearchScreen: View {
     var body: some View {
-        Image(systemName: "peacesign")
+        VStack {
+            Text("Suche")
+                .padding()
+            
+           AlbumSearchView()
+        }
     }
 }
+
 
 struct SearchScreen_Previews: PreviewProvider {
     static var previews: some View {
