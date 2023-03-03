@@ -17,20 +17,15 @@ import Combine
 
 class AlbumListViewModel: ObservableObject {
     
-    enum State: Comparable {
-        case good
-        case isLoading
-        case loadedAll
-        case error(String)
-    }
-    
     @Published var searchTerm: String = ""
     @Published var albums: [Album] = [Album]()
     
-    @Published var state: State = .good
+    @Published var state: FetchState = .good
     
     let limit: Int = 20
     var page: Int = 0
+    
+    let service = APIService()
     
     var subscriptions = Set<AnyCancellable>()
     
@@ -40,6 +35,7 @@ class AlbumListViewModel: ObservableObject {
             .dropFirst()
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink { [weak self] term in     // ???
+                self?.state = .good
                 self?.albums = []
             self?.fetchAlbums(for: term)
         }.store(in: &subscriptions)
@@ -55,45 +51,32 @@ class AlbumListViewModel: ObservableObject {
             return
         }
         
-        guard state == State.good else {
+        guard state == FetchState.good else {
             return
         }
-        
-        let offset = page * limit
-        guard let url = URL(string: "https://itunes.apple.com/search?term=\(searchTerm)&entity=album&limit=\(limit)&offset=\(offset)") else {
-            return
-        }
-        
-        print("start fetching data for \(searchTerm)")
         
         state = .isLoading
+     
         
-        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            
-            if let error = error {
-                print("error: \(error.localizedDescription)")
-                DispatchQueue.main.async {
+        service.fetchAlbums(searchTerm: searchTerm, page: page, limit: limit) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                    
+                case .success(let results):
+                    for album in results.results {
+                        self?.albums.append(album)
+                    }
+                    self?.page += 1
+                    self?.state = (results.results.count == self?.limit) ? .good : .loadedAll
+                    print("fetched \(results.resultCount)")
+                    
+                case .failure(let error):
                     self?.state = .error("Could not load: \(error.localizedDescription)")
                 }
-            } else if let data = data {
-                
-                do {
-                    let result = try JSONDecoder().decode(AlbumResult.self, from: data)
-                    DispatchQueue.main.async {      // sendet zum Main Queue
-                        for album in result.results {
-                            self?.albums.append(album)
-                        }
-                        self?.page += 1
-                        self?.state = (self?.albums.count == self?.limit) ? .good : .loadedAll
-                    }
-                } catch {
-                    print("decoding error \(error)")
-                    DispatchQueue.main.async {
-                        self?.state = .error("Could not get data: \(error.localizedDescription)")
-                        
-                    }
-                }
             }
-        }.resume()
+        }
+    
     }
+    
 }
+ 

@@ -37,10 +37,10 @@ struct TitleRow: View {
           
             
             Image(systemName: "phone.fill")
-                .foregroundColor(.gray.opacity(0.8))
-                .padding(10)
+                .foregroundColor(.gray.opacity(0.7))
+                .padding(15)
                 .background(.white)
-                .cornerRadius(50)
+                .cornerRadius(25)
               }
         .padding()
     }

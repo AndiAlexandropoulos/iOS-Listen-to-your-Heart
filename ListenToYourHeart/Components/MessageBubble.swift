@@ -20,9 +20,9 @@ struct MessageBubble: View {
                     .padding()
                     .background(message.received ?
                                 Color("PurpleLight").opacity(0.25) : Color("OrangeLight").opacity(0.25))
-                    .cornerRadius(15)
+                    .cornerRadius(8)
             }
-            .frame(maxWidth: 300, alignment: message.received ? .leading : .trailing)
+            .frame(maxWidth: 310, alignment: message.received ? .leading : .trailing)
             .onTapGesture {
                 showTime.toggle()
             }
@@ -31,12 +31,12 @@ struct MessageBubble: View {
                 Text("\(message.timestamp.formatted(.dateTime.hour().minute()))")
                     .font(.caption2)
                     .foregroundColor(.gray.opacity(0.5))
-                    .padding(message.received ? .leading : .trailing, 25)
+                    .padding(message.received ? .leading : .trailing,25)
             }
         }
         .frame(maxWidth: .infinity, alignment: message.received ? .leading : .trailing)
         .padding(message.received ? .leading : .trailing)
-        .padding(.horizontal, 10)
+       // .padding(.horizontal, 5)
     }
 }
 

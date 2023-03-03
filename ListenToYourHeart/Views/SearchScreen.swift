@@ -13,7 +13,7 @@ struct SearchScreen: View {
             Text("Suche")
                 .padding()
             
-            AlbumListView()
+           AlbumSearchView()
         }
     }
 }
