@@ -39,7 +39,7 @@
 		A9D5E80C29AFE5CC00277D21 /* ChatConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5E80B29AFE5CC00277D21 /* ChatConversationView.swift */; };
 		A9D5E80E29AFEB3100277D21 /* AlbumSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5E80D29AFEB3100277D21 /* AlbumSearchView.swift */; };
 		A9D5E81029AFFE7600277D21 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5E80F29AFFE7600277D21 /* APIError.swift */; };
-		A9DD2D0129A6477000A60E40 /* HeartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DD2D0029A6477000A60E40 /* HeartViewModel.swift */; };
+		A9DD2D0129A6477000A60E40 /* AlbumListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DD2D0029A6477000A60E40 /* AlbumListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,7 +75,7 @@
 		A9D5E80B29AFE5CC00277D21 /* ChatConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatConversationView.swift; sourceTree = "<group>"; };
 		A9D5E80D29AFEB3100277D21 /* AlbumSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSearchView.swift; sourceTree = "<group>"; };
 		A9D5E80F29AFFE7600277D21 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
-		A9DD2D0029A6477000A60E40 /* HeartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartViewModel.swift; sourceTree = "<group>"; };
+		A9DD2D0029A6477000A60E40 /* AlbumListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +109,8 @@
 		A97D453B29B15A8000990372 /* album */ = {
 			isa = PBXGroup;
 			children = (
+				A9D3218829ACBDC100FDBFF6 /* AlbumListView.swift */,
+				A9D5E80D29AFEB3100277D21 /* AlbumSearchView.swift */,
 			);
 			path = album;
 			sourceTree = "<group>";
@@ -119,6 +121,25 @@
 				A9C0BD4929B1E3A80001BE9F /* VideoListView.swift */,
 			);
 			path = video;
+			sourceTree = "<group>";
+		};
+		A9C0BD4B29B239BD0001BE9F /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				A9D5E80B29AFE5CC00277D21 /* ChatConversationView.swift */,
+				A9D3219E29ACDD0000FDBFF6 /* ChatListView.swift */,
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
+		A9C0BD4C29B23A000001BE9F /* ChatComponents */ = {
+			isa = PBXGroup;
+			children = (
+				A9D3219129ACC2A300FDBFF6 /* MessageBubble.swift */,
+				A9D3218F29ACC26100FDBFF6 /* TitleRow.swift */,
+				A9D3219329ACC2CB00FDBFF6 /* MessageField.swift */,
+			);
+			path = ChatComponents;
 			sourceTree = "<group>";
 		};
 		A9C67AAE296D8DAF0010AB47 = {
@@ -168,6 +189,8 @@
 		A9C67AC8296D8DFE0010AB47 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A9D8B22D29B8BB5A003A1905 /* search */,
+				A9C0BD4B29B239BD0001BE9F /* chat */,
 				A97D453C29B15A8800990372 /* video */,
 				A97D453B29B15A8000990372 /* album */,
 				A97D453A29B15A7300990372 /* song */,
@@ -175,10 +198,6 @@
 				A9C67ACB296DA5520010AB47 /* LoginScreen.swift */,
 				A9C67ACD296DA5680010AB47 /* SignupScreen.swift */,
 				A9CE12CA29951DD60061A518 /* SearchScreen.swift */,
-				A9D3218829ACBDC100FDBFF6 /* AlbumListView.swift */,
-				A9D3219E29ACDD0000FDBFF6 /* ChatListView.swift */,
-				A9D5E80B29AFE5CC00277D21 /* ChatConversationView.swift */,
-				A9D5E80D29AFEB3100277D21 /* AlbumSearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,9 +205,7 @@
 		A9D3218E29ACC20300FDBFF6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				A9D3218F29ACC26100FDBFF6 /* TitleRow.swift */,
-				A9D3219129ACC2A300FDBFF6 /* MessageBubble.swift */,
-				A9D3219329ACC2CB00FDBFF6 /* MessageField.swift */,
+				A9C0BD4C29B23A000001BE9F /* ChatComponents */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -210,12 +227,19 @@
 		A9D4472F29A3B8BF001144AF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				A9DD2D0029A6477000A60E40 /* HeartViewModel.swift */,
+				A9DD2D0029A6477000A60E40 /* AlbumListViewModel.swift */,
 				A9CC277F29B09CAD00EEDE21 /* APIService.swift */,
 				A97D453429B1485500990372 /* SongListViewModel.swift */,
 				A97D453829B1589000990372 /* VideoListViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A9D8B22D29B8BB5A003A1905 /* search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,7 +325,7 @@
 				A97D453529B1485500990372 /* SongListViewModel.swift in Sources */,
 				A9D5E80E29AFEB3100277D21 /* AlbumSearchView.swift in Sources */,
 				A9D3218529ACBCAD00FDBFF6 /* Song.swift in Sources */,
-				A9DD2D0129A6477000A60E40 /* HeartViewModel.swift in Sources */,
+				A9DD2D0129A6477000A60E40 /* AlbumListViewModel.swift in Sources */,
 				A9D3219029ACC26100FDBFF6 /* TitleRow.swift in Sources */,
 				A9C67ACA296D90BB0010AB47 /* WelcomeScreen.swift in Sources */,
 				A9C67ACC296DA5520010AB47 /* LoginScreen.swift in Sources */,

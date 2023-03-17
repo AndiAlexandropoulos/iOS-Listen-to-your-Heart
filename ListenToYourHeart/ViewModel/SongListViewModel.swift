@@ -11,11 +11,10 @@ class SongListViewModel: ObservableObject {
     
     @Published var searchTerm: String = ""
     @Published var songs: [Song] [Song]()
+    
     @Published var state: FetchState = .good
     
     private let service = APIService()
-    
-    
     
     let limit: Int = 20
     var page: Int = 0

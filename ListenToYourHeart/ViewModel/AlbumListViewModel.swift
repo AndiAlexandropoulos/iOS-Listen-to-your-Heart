@@ -46,11 +46,11 @@ class AlbumListViewModel: ObservableObject {
     }
     
     func fetchAlbums(for searchTerm: String) {
-        
+        // check if i start the fetch request
         guard !searchTerm.isEmpty else {
             return
         }
-        
+        // Don´t start if already loading
         guard state == FetchState.good else {
             return
         }
@@ -75,8 +75,6 @@ class AlbumListViewModel: ObservableObject {
                 }
             }
         }
-    
     }
-    
 }
  
