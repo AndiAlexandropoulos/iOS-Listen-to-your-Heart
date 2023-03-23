@@ -38,8 +38,7 @@ enum APIError: Error, CustomStringConvertible {
         case .badURL, .unknown:
             return "something went wrong"
         case .urlSession(let urlError):
-            return urlError?.localizedDescription ??
-            "something went wrong"
+            return urlError?.localizedDescription ?? "something went wrong"
         case .badResponse(_):
             return "something went wrong"
         case .decoding(let decodingError):

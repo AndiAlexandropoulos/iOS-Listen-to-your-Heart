@@ -10,12 +10,10 @@ import Foundation
 class SongListViewModel: ObservableObject {
     
     @Published var searchTerm: String = ""
-    @Published var songs: [Song] [Song]()
+    @Published var songs: [Song] = [Song]()
     @Published var state: FetchState = .good
     
     private let service = APIService()
-    
-    
     
     let limit: Int = 20
     var page: Int = 0
@@ -38,7 +36,7 @@ class SongListViewModel: ObservableObject {
                 switch result {
                     
                 case .success(let results):
-                    for song in results.results {
+                    for songs in results.results {
                         self?.songs.append(songs)
                     }
                     self?.page += 1
@@ -50,6 +48,8 @@ class SongListViewModel: ObservableObject {
                 }
             }
         }
-        
+        func loadMore() {
+            fetchSongs(for: searchTerm)
+        }
     }
 }
