@@ -17,6 +17,8 @@ import Combine
 
 class AlbumListViewModel: ObservableObject {
     
+    
+    
     @Published var searchTerm: String = ""
     @Published var albums: [Album] = [Album]()
     
@@ -37,8 +39,8 @@ class AlbumListViewModel: ObservableObject {
             .sink { [weak self] term in     // ???
                 self?.state = .good
                 self?.albums = []
-            self?.fetchAlbums(for: term)
-        }.store(in: &subscriptions)
+                self?.fetchAlbums(for: term)
+            }.store(in: &subscriptions)
     }
     
     func loadMore() {
@@ -46,9 +48,10 @@ class AlbumListViewModel: ObservableObject {
     }
     
     func fetchAlbums(for searchTerm: String) {
+        
         // check if i start the fetch request
         guard !searchTerm.isEmpty else {
-            return
+            return  
         }
         // Don´t start if already loading
         guard state == FetchState.good else {
@@ -56,12 +59,10 @@ class AlbumListViewModel: ObservableObject {
         }
         
         state = .isLoading
-     
         
         service.fetchAlbums(searchTerm: searchTerm, page: page, limit: limit) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                    
                 case .success(let results):
                     for album in results.results {
                         self?.albums.append(album)

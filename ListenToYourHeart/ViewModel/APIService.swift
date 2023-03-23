@@ -10,13 +10,13 @@ import Foundation
 enum EntityType: String {
     case album
     case song
-    case video
+    case movie
 }
 
 class APIService {
     
   func fetchAlbums(searchTerm: String, page: Int, limit: Int, completion: @escaping (Result<AlbumResult, APIError>) -> Void) {
-      let url = createURL(for: searchTerm,type: .album, page: page, limit: limit)
+      let url = createURL(for: searchTerm, type: .album, page: page, limit: limit)
         fetch (type: AlbumResult.self, url: url, completion: completion)
     }
     
@@ -24,14 +24,13 @@ class APIService {
         let url = createURL(for: searchTerm, type: .song, page: page, limit: limit)
           fetch (type: SongResult.self, url: url, completion: completion)
       }
-    
-    func fetchVideos(searchTerm: String, page: Int, limit: Int, completion: @escaping (Result<VideoResult, APIError>) -> Void) {
-        let url = createURL(for: searchTerm,type: .video, page: page, limit: limit)
-          fetch (type: VideoResult.self, url: url, completion: completion)
-      }
  
+    func fetchMovies(searchTerm: String, completion: @escaping (Result<MovieResult,APIError>) -> Void) {
+        let url = createURL(for: searchTerm, type: .movie, page: nil, limit: nil)
+          fetch (type: MovieResult.self, url: url, completion: completion)
+      }
 
-    func fetch<T: Decodable>(type: T.Type, url: URL?, completion: @escaping (Result<T, APIError>) -> Void) {
+    func fetch<T: Decodable>(type: T.Type, url: URL?, completion: @escaping(Result<T,APIError>) -> Void) {
         
         guard let url = url else {
             let error = APIError.badURL
@@ -57,12 +56,13 @@ class APIService {
         }.resume()
     }
     
-    func createURL(for searchTerm: String, type: EntityType, page: Int?, limit: Int?) -> URL? {
+    func createURL(for searchTerm: String, type: EntityType = .album, page: Int?, limit: Int?) -> URL? {
         // https://itunes.apple.com/search?term=jack+johnson&entity=album&limit=5&offset=10
         let baseURL = "https://itunes.apple.com/search"
+        
         var queryItems = [URLQueryItem(name: "term", value: searchTerm),
                           URLQueryItem(name: "entity", value: type.rawValue)]
-                          
+            
         if let page = page, let limit = limit {
             let offset = page * limit
             queryItems.append(URLQueryItem(name: "limit", value: String(limit)))
