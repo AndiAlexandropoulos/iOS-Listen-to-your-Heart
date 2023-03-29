@@ -15,7 +15,7 @@ struct AlbumListView: View {
         
             List {
                 ForEach(viewModel.albums) { album in
-                    Text(album.collectionName)
+                    AlbumRowView(album: album)
                 }
                 
         switch viewModel.state {
@@ -30,8 +30,8 @@ struct AlbumListView: View {
                         .progressViewStyle(.circular)
                         .frame(maxWidth: .infinity)
             case .loadedAll:
-                //EmptyView()
-                Color.gray
+                EmptyView()
+                //Color.red
             case .error(let message):
                 Text(message)
                     .foregroundColor(.pink)

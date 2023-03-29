@@ -14,56 +14,61 @@ struct SongResult: Codable {
 }
 
 // MARK: - Result
-struct Song: Codable {
-    let wrapperType: WrapperType
-    let kind: Kind
-    let artistID, collectionID, trackID: Int
-    let artistName, collectionName, trackName, collectionCensoredName: String
-    let trackCensoredName: String
+struct Song: Codable, Identifiable {
+    let wrapperType, kind: String
+    let artistID: Int
+    let collectionID: Int
+    let id: Int
+    let artistName, collectionName, trackName: String
     let artistViewURL, collectionViewURL, trackViewURL: String
     let previewURL: String
     let artworkUrl30, artworkUrl60, artworkUrl100: String
-    let collectionPrice, trackPrice: Double
-    let releaseDate: Date
-    let collectionExplicitness, trackExplicitness: Explicitness
-    let discCount, discNumber, trackCount, trackNumber: Int
+    let collectionPrice, trackPrice: Double?
+    let releaseDate: String
+    let trackCount, trackNumber: Int
     let trackTimeMillis: Int
-    let country: Country
-    let currency: Currency
-    let primaryGenreName: String
-    let isStreamable: Bool
+    let country, currency, primaryGenreName: String
     let collectionArtistName: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case wrapperType, kind
         case artistID = "artistId"
         case collectionID = "collectionId"
-        case trackID = "trackId"
-        case artistName, collectionName, trackName, collectionCensoredName, trackCensoredName
+        case id = "trackId"
+        case artistName, collectionName, trackName
         case artistViewURL = "artistViewUrl"
         case collectionViewURL = "collectionViewUrl"
         case trackViewURL = "trackViewUrl"
         case previewURL = "previewUrl"
-        case artworkUrl30, artworkUrl60, artworkUrl100, collectionPrice, trackPrice, releaseDate, collectionExplicitness, trackExplicitness, discCount, discNumber, trackCount, trackNumber, trackTimeMillis, country, currency, primaryGenreName, isStreamable, collectionArtistName
+        case artworkUrl30, artworkUrl60, artworkUrl100, collectionPrice, trackPrice, releaseDate, trackCount, trackNumber, trackTimeMillis, country, currency, primaryGenreName, collectionArtistName
     }
-}
-
-enum Explicitness: String, Codable {
-    case notExplicit = "notExplicit"
-}
-
-enum Country: String, Codable {
-    case usa = "USA"
-}
-
-enum Currency: String, Codable {
-    case usd = "USD"
-}
-
-enum Kind: String, Codable {
-    case song = "song"
-}
-
-enum WrapperType: String, Codable {
-    case track = "track"
+    
+    static func example() -> Song {
+        
+        Song(wrapperType: "Song", kind: "", artistID: 1, collectionID: 1, id: 1, artistName: "Jack Johnson", collectionName: "Jack Johnson and Friends: Sing-A-Longs and Lullabies for the Film Curious George", trackName: "Upside Down", artistViewURL: "", collectionViewURL: "", trackViewURL: "https://music.apple.com/us/album/upside-down/1469577723?i=1469577741&uo=4", previewURL: "", artworkUrl30: "https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/08/11/d2/0811d2b3-b4d5-dc22-1107-3625511844b5/00602537869770.rgb.jpg/30x30bb.jpg",
+             artworkUrl60: "https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/08/11/d2/0811d2b3-b4d5-dc22-1107-3625511844b5/00602537869770.rgb.jpg/60x60bb.jpg", artworkUrl100: "https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/08/11/d2/0811d2b3-b4d5-dc22-1107-3625511844b5/00602537869770.rgb.jpg/100x100bb.jpg", collectionPrice: 9.99,trackPrice: 1.29, releaseDate: "2006-02-07T08:00:00Z", trackCount: 15, trackNumber: 1, trackTimeMillis: 208643, country: "USA", currency: "USD", primaryGenreName: "Rock", collectionArtistName: nil)
+    }
+    /*
+     {"wrapperType":"collection", "collectionType":"Album", "artistId":909253, "collectionId":1469577723, "amgArtistId":468749, "artistName":"Jack Johnson", "collectionName":"Jack Johnson and Friends: Sing-A-Longs and Lullabies for the Film Curious George", "collectionCensoredName":"Jack Johnson and Friends: Sing-A-Longs and Lullabies for the Film Curious George", "artistViewUrl":"https://music.apple.com/us/artist/jack-johnson/909253?uo=4", "collectionViewUrl":"https://music.apple.com/us/album/jack-johnson-and-friends-sing-a-longs-and/1469577723?uo=4", "artworkUrl60":"https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/08/11/d2/0811d2b3-b4d5-dc22-1107-3625511844b5/00602537869770.rgb.jpg/60x60bb.jpg", "artworkUrl100":"https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/08/11/d2/0811d2b3-b4d5-dc22-1107-3625511844b5/00602537869770.rgb.jpg/100x100bb.jpg", "collectionPrice":9.99, "collectionExplicitness":"notExplicit", "trackCount":15, "copyright":"℗ 2014 Brushfire Records", "country":"USA", "currency":"USD", "releaseDate":"2006-02-07T08:00:00Z", "primaryGenreName":"Rock"},
+     */
+    enum Explicitness: String, Codable {
+        case notExplicit = "notExplicit"
+    }
+    
+    enum Country: String, Codable {
+        case usa = "USA"
+    }
+    
+    enum Currency: String, Codable {
+        case usd = "USD"
+    }
+    
+    enum Kind: String, Codable {
+        case song = "song"
+    }
+    
+    enum WrapperType: String, Codable {
+        case track = "track"
+    }
+    
 }

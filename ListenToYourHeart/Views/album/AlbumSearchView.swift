@@ -16,7 +16,7 @@ struct AlbumSearchView: View {
           
             Group {
                 if  viewModel.searchTerm.isEmpty {
-                    AlbumPlaceholderView(searchTerm: $viewModel.searchTerm)
+                    SearchPlaceholderView(searchTerm: $viewModel.searchTerm)
                 } else {
                     AlbumListView(viewModel: viewModel)
                 }
@@ -28,27 +28,6 @@ struct AlbumSearchView: View {
         }
 }
 
-struct AlbumPlaceholderView : View {
-    
-    @Binding var searchTerm: String
-    let suggestions = ["rammstein", "michael jackson", "maneskin"]
-    
-    var body: some View {
-        VStack (spacing: 15){
-            
-            Text("Trending")
-                .font(.title2)
-            
-            ForEach(suggestions, id: \.self) { text in
-                Button {
-                    searchTerm = text
-                } label: {
-                    Text(text)
-                }
-            }
-        }
-    }
-}
 struct AlbumSearchView_Previews: PreviewProvider {
     static var previews: some View {
         AlbumSearchView()
