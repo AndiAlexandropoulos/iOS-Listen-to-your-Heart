@@ -41,7 +41,7 @@ struct SearchView: View {
                             .onAppear {
                                 albumListViewModel.searchTerm = searchTerm
                                 songListViewModel.searchTerm = searchTerm
-                                movieListViewModel.searchTerm = searchTerm
+                                movieListViewModel.searchTerm = searchTerm 
                             }
                     case .album:
                         AlbumListView(viewModel: albumListViewModel)
@@ -87,9 +87,6 @@ struct SearchView: View {
                 movieListViewModel.searchTerm = newValue
                 
             }
-            albumListViewModel.searchTerm = newValue
-            songListViewModel.searchTerm = newValue
-            movieListViewModel.searchTerm = newValue
         }
     }
 }

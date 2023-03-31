@@ -10,19 +10,29 @@ import Foundation
 
 class APIService {
     
-  func fetchAlbums(searchTerm: String, page: Int, limit: Int, completion: @escaping (Result<AlbumResult, APIError>) -> Void) {
+    func fetchAlbums(searchTerm: String, page: Int, limit: Int, completion: @escaping (Result<AlbumResult, APIError>) -> Void) {
       let url = createURL(for: searchTerm, type: .album, page: page, limit: limit)
         fetch (type: AlbumResult.self, url: url, completion: completion)
     }
     
+    func fetchAlbum(for albumID: Int, completion: @escaping(Result<AlbumResult, APIError>) -> Void) {
+        let url = createURL(for: albumID, type: .album)
+        fetch(type: AlbumResult.self, url: url, completion: completion)
+    }
+    
+    func fetchSongs(for albumID: Int, completion: @escaping (Result<SongResult, APIError>) -> Void) {
+        let url = createURL(for: albumID, type: .song)
+        fetch(type: SongResult.self, url: url, completion: completion)
+    }
+    
     func fetchSongs(searchTerm: String, page: Int, limit: Int, completion: @escaping (Result<SongResult, APIError>) -> Void) {
         let url = createURL(for: searchTerm, type: .song, page: page, limit: limit)
-          fetch (type: SongResult.self, url: url, completion: completion)
-      }
+        fetch (type: SongResult.self, url: url, completion: completion)
+    }
  
     func fetchMovies(searchTerm: String, completion: @escaping (Result<MovieResult,APIError>) -> Void) {
         let url = createURL(for: searchTerm, type: .movie, page: nil, limit: nil)
-          fetch (type: MovieResult.self, url: url, completion: completion)
+        fetch (type: MovieResult.self, url: url, completion: completion)
       }
 
     func fetch<T: Decodable>(type: T.Type, url: URL?, completion: @escaping(Result<T,APIError>) -> Void) {
@@ -69,4 +79,17 @@ class APIService {
         return components?.url
     }
     
+    // "https://itunes.apple.com/lookup?id=909253&entity=song
+    
+    func createURL(for id: Int, type: EntityType) -> URL? {
+        let baseURL = "https://itunes.apple.com/lookup"
+        
+        var queryItems = [URLQueryItem(name: "id", value: String(id)),
+                          URLQueryItem(name: "entity", value: type.rawValue)]
+                                       
+        var components = URLComponents(string: baseURL)
+        components?.queryItems = queryItems
+        return components?.url
+
+    }
 }

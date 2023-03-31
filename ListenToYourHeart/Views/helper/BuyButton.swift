@@ -28,6 +28,7 @@ struct BuySongButton: View {
 
 
 struct BuyButton: View {
+     
     let urlString: String
     let price: Double?
     let currency: String
@@ -60,7 +61,7 @@ struct BuyButton: View {
 struct BuyButton_Previews: PreviewProvider {
     static var previews: some View {
         
-        let example = Song.example()
+        let example = Album.example()
         
         return BuyButton(urlString: example.collectionViewURL,
                          price: example.collectionPrice,
