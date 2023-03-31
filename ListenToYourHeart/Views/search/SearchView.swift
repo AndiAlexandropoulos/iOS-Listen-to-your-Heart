@@ -37,12 +37,16 @@ struct SearchView: View {
                     
                     switch selectedEntityType {
                     case .all:
-                        SearchAllListView(albumListViewModel: albumListViewModel, songListViewModel: songListViewModel, movieListViewModel: movieListViewModel)
-                            .onAppear {
-                                albumListViewModel.searchTerm = searchTerm
-                                songListViewModel.searchTerm = searchTerm
-                                movieListViewModel.searchTerm = searchTerm 
-                            }
+                        SearchAllListView(albumListViewModel: albumListViewModel,
+                                          songListViewModel: songListViewModel,
+                                          movieListViewModel: movieListViewModel)
+                        .onAppear {
+                            albumListViewModel.searchTerm = searchTerm
+                            songListViewModel.searchTerm = searchTerm
+                            movieListViewModel.searchTerm = searchTerm
+                        }
+                    
+                            
                     case .album:
                         AlbumListView(viewModel: albumListViewModel)
                             .onAppear {
@@ -53,7 +57,7 @@ struct SearchView: View {
                             .onAppear {
                                 songListViewModel.searchTerm = searchTerm
                             }
-
+                    
                     case .movie:
                         MovieListView(viewModel: movieListViewModel)
                             .onAppear {
@@ -68,26 +72,37 @@ struct SearchView: View {
             .navigationBarTitleDisplayMode(.inline)
             
         }
+        .onChange(of: selectedEntityType, perform: { newValue in
+            updateViewModels(for: searchTerm, selectedEntityType: newValue)
+        })
+        
         .onChange(of: searchTerm) { newValue in
-            
-            switch selectedEntityType {
-            
+            updateViewModels(for: newValue, selectedEntityType: selectedEntityType)
+        }
+    }
+    
+    func updateViewModels(for searchTerm: String, selectedEntityType: EntityType) {
+        switch selectedEntityType {
             case .all:
-                albumListViewModel.searchTerm = newValue
-                songListViewModel.searchTerm = newValue
-                movieListViewModel.searchTerm = newValue
+                albumListViewModel.searchTerm = searchTerm
+                songListViewModel.searchTerm = searchTerm
+                movieListViewModel.searchTerm = searchTerm
                 
             case .album:
-                albumListViewModel.searchTerm = newValue
+                albumListViewModel.searchTerm = searchTerm
+                songListViewModel.searchTerm = ""
+                movieListViewModel.searchTerm = ""
                 
             case .song:
-                songListViewModel.searchTerm = newValue
+                songListViewModel.searchTerm = searchTerm
+                albumListViewModel.searchTerm = ""
+                movieListViewModel.searchTerm = ""
                 
             case .movie:
-                movieListViewModel.searchTerm = newValue
-                
+                movieListViewModel.searchTerm = searchTerm
+                albumListViewModel.searchTerm = ""
+                songListViewModel.searchTerm = ""
             }
-        }
     }
 }
 
