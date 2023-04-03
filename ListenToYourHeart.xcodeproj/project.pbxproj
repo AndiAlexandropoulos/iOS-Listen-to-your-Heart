@@ -27,6 +27,12 @@
 		A981618129D2DBF100158D90 /* AlbumSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A981618029D2DBF100158D90 /* AlbumSectionView.swift */; };
 		A981618329D2DC1300158D90 /* MovieSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A981618229D2DC1300158D90 /* MovieSectionView.swift */; };
 		A9C3F41829D1B6ED00FB46C4 /* SongRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C3F41729D1B6ED00FB46C4 /* SongRowView.swift */; };
+		A9C5779229DA0DF100457B6E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A9C5779129DA0DF100457B6E /* FirebaseAnalyticsSwift */; };
+		A9C5779429DA0DFD00457B6E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A9C5779329DA0DFD00457B6E /* FirebaseAnalytics */; };
+		A9C5779629DA0E0A00457B6E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A9C5779529DA0E0A00457B6E /* FirebaseAuth */; };
+		A9C5779929DA0F4900457B6E /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C5779829DA0F4900457B6E /* AuthenticationView.swift */; };
+		A9C5779B29DA112D00457B6E /* SignInEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C5779A29DA112D00457B6E /* SignInEmailView.swift */; };
+		A9C5779D29DA1BC400457B6E /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C5779C29DA1BC400457B6E /* AuthenticationManager.swift */; };
 		A9C67ABB296D8DAF0010AB47 /* ListenToYourHeartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C67ABA296D8DAF0010AB47 /* ListenToYourHeartApp.swift */; };
 		A9C67ABD296D8DAF0010AB47 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C67ABC296D8DAF0010AB47 /* ContentView.swift */; };
 		A9C67ABF296D8DB00010AB47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9C67ABE296D8DB00010AB47 /* Assets.xcassets */; };
@@ -83,6 +89,9 @@
 		A981618029D2DBF100158D90 /* AlbumSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSectionView.swift; sourceTree = "<group>"; };
 		A981618229D2DC1300158D90 /* MovieSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSectionView.swift; sourceTree = "<group>"; };
 		A9C3F41729D1B6ED00FB46C4 /* SongRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongRowView.swift; sourceTree = "<group>"; };
+		A9C5779829DA0F4900457B6E /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		A9C5779A29DA112D00457B6E /* SignInEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailView.swift; sourceTree = "<group>"; };
+		A9C5779C29DA1BC400457B6E /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		A9C67AB7296D8DAF0010AB47 /* ListenToYourHeart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListenToYourHeart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9C67ABA296D8DAF0010AB47 /* ListenToYourHeartApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenToYourHeartApp.swift; sourceTree = "<group>"; };
 		A9C67ABC296D8DAF0010AB47 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -125,7 +134,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9C5779229DA0DF100457B6E /* FirebaseAnalyticsSwift in Frameworks */,
+				A9C5779629DA0E0A00457B6E /* FirebaseAuth in Frameworks */,
 				A96E38D829ADFA6300BD4817 /* FirebaseFirestore in Frameworks */,
+				A9C5779429DA0DFD00457B6E /* FirebaseAnalytics in Frameworks */,
 				A96E38DA29ADFA6300BD4817 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,6 +148,7 @@
 		A96E38DC29ADFE7B00BD4817 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				A9C5779729DA0F2400457B6E /* Authentication */,
 				A96E38DD29ADFEB300BD4817 /* AuthService.swift */,
 			);
 			path = Service;
@@ -202,12 +215,30 @@
 			path = ChatComponents;
 			sourceTree = "<group>";
 		};
+		A9C5779029DA0DF100457B6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A9C5779729DA0F2400457B6E /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				A9C5779829DA0F4900457B6E /* AuthenticationView.swift */,
+				A9C5779A29DA112D00457B6E /* SignInEmailView.swift */,
+				A9C5779C29DA1BC400457B6E /* AuthenticationManager.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		A9C67AAE296D8DAF0010AB47 = {
 			isa = PBXGroup;
 			children = (
 				A9CFBDC529CC6D35001EF1AD /* .gitignore */,
 				A9C67AB9296D8DAF0010AB47 /* ListenToYourHeart */,
 				A9C67AB8296D8DAF0010AB47 /* Products */,
+				A9C5779029DA0DF100457B6E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -340,6 +371,9 @@
 			packageProductDependencies = (
 				A96E38D729ADFA6300BD4817 /* FirebaseFirestore */,
 				A96E38D929ADFA6300BD4817 /* FirebaseFirestoreSwift */,
+				A9C5779129DA0DF100457B6E /* FirebaseAnalyticsSwift */,
+				A9C5779329DA0DFD00457B6E /* FirebaseAnalytics */,
+				A9C5779529DA0E0A00457B6E /* FirebaseAuth */,
 			);
 			productName = ListenToYourHeart;
 			productReference = A9C67AB7296D8DAF0010AB47 /* ListenToYourHeart.app */;
@@ -409,6 +443,7 @@
 				A9D5E80E29AFEB3100277D21 /* AlbumSearchView.swift in Sources */,
 				A9D910B229CB55A600AD3610 /* MovieListViewModel.swift in Sources */,
 				A9E592D529CD9CF400AE66E7 /* SearchPlaceholderView.swift in Sources */,
+				A9C5779B29DA112D00457B6E /* SignInEmailView.swift in Sources */,
 				A9D3218529ACBCAD00FDBFF6 /* Song.swift in Sources */,
 				A938E5DA29D47EB70086B548 /* SongsForAlbumListView.swift in Sources */,
 				A938E5D829D473260086B548 /* SongsForAlbumListViewModel.swift in Sources */,
@@ -426,11 +461,13 @@
 				A9D3219429ACC2CB00FDBFF6 /* MessageField.swift in Sources */,
 				A9D3219F29ACDD0000FDBFF6 /* ChatListView.swift in Sources */,
 				A9D910B029CB553300AD3610 /* Movie.swift in Sources */,
+				A9C5779D29DA1BC400457B6E /* AuthenticationManager.swift in Sources */,
 				A9C3F41829D1B6ED00FB46C4 /* SongRowView.swift in Sources */,
 				A9D5E81029AFFE7600277D21 /* APIError.swift in Sources */,
 				A9C67ABD296D8DAF0010AB47 /* ContentView.swift in Sources */,
 				A9D3219229ACC2A300FDBFF6 /* MessageBubble.swift in Sources */,
 				A9D5E80C29AFE5CC00277D21 /* ChatConversationView.swift in Sources */,
+				A9C5779929DA0F4900457B6E /* AuthenticationView.swift in Sources */,
 				A9C67ACE296DA5680010AB47 /* SignupScreen.swift in Sources */,
 				A981617429D1C3F100158D90 /* BuyButtonStyle.swift in Sources */,
 				A9D910AE29CB529500AD3610 /* MovieSearchListView.swift in Sources */,
@@ -585,7 +622,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -616,7 +653,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -674,6 +711,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A96E38D629ADFA6300BD4817 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		A9C5779129DA0DF100457B6E /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A96E38D629ADFA6300BD4817 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		A9C5779329DA0DFD00457B6E /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A96E38D629ADFA6300BD4817 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		A9C5779529DA0E0A00457B6E /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A96E38D629ADFA6300BD4817 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
