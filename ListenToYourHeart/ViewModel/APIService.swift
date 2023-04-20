@@ -84,7 +84,7 @@ class APIService {
     func createURL(for id: Int, type: EntityType) -> URL? {
         let baseURL = "https://itunes.apple.com/lookup"
         
-        var queryItems = [URLQueryItem(name: "id", value: String(id)),
+        let queryItems = [URLQueryItem(name: "id", value: String(id)),
                           URLQueryItem(name: "entity", value: type.rawValue)]
                                        
         var components = URLComponents(string: baseURL)

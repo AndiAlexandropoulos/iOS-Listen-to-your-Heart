@@ -18,7 +18,7 @@ struct MovieSearchListView: View {
                     MovieListView(viewModel: viewModel)
             }
             .searchable(text: $viewModel.searchTerm)
-            .navigationTitle("Search Movies")
+            .navigationTitle("Filme")
         }
     }
 }

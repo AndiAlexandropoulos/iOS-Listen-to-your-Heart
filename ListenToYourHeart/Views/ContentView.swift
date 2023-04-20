@@ -20,12 +20,12 @@ struct ContentView: View {
                 .tabItem {
                     Label("Alben", systemImage: "music.note")
                 }
-            
+    /*
             MovieSearchListView()
                 .tabItem {
                     Label("Filme", systemImage: "tv")
                 }
-            
+            */
             ChatConversationView()
                 .tabItem {
                     Label("Chats", systemImage: "paperplane")

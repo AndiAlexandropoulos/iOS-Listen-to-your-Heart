@@ -26,9 +26,10 @@ struct ListenToYourHeartApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                
+                // LoginView()
+                ContentView()
             }
-            // ContentView()
+            
         }
     }
 }
